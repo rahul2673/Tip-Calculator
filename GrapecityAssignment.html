@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<h1>Tip Calculator</h1>
+<input type="text" id="text1" placeholder="Enter the bill $">
+<br>
+<input type="text" id="text2" placeholder="Enter the tip %">    
+<br>     
+<input type="text" id="text3" placeholder="Enter number of person">    
+<br>  
+<button onclick="TipCalculator()">Calculate</button>
+<br>
+<h3 id="answer2"></h3> 
+<h3 id="answer1"></h3> 
+<ol type="1" start="1"><b><u>Functional test cases</u></b>
+<li>Bill value should not be empty
+<li>Bill value should have positive value
+<li>Tip percentage should not be empty
+<li>Tip percentage should be less than equal to 100
+<li>Tip percentage should be greater than equal to 0
+<li>Number of people should not be empty
+<li>Number of people should be greater than 0
+<li>Input value in bill should only be numeric
+<li>Input value in tip percentage should only be numeric
+<li>Input value in number of people should only be numeric
+</ol>
+<ol type="1" start="1"><b><u>UI test cases</u></b>
+<li>Calculate button should be placed after inserting values only
+<li>Calculate button should be placed correctly
+<li>Output of total bill per person should be displayed below the button
+<li>Bill should be asked first
+<li>Tip should be asked second
+<li>Person should be asked third
+<li>All the three inputs should be aligned in one column
+<li>Spelling of each entry should be correct
+<li>Alert should be displayed when required
+<li>Text should be easily readable
+</ol>
+<script>
+function TipCalculator()
+{
+    var bill=document.getElementById("text1").value;
+    var tipPercentage=document.getElementById("text2").value;
+    var numberOfPeople=document.getElementById("text3").value;
+    var totalTip, tipPerPerson, totalBillPerPerson;
+	if(bill=="")
+	{
+	alert("Please input Bill");
+	}
+	else if(bill<=0)
+	{
+	alert("Please input positive value in Bill");
+	}
+	else if(tipPercentage=="")
+	{
+	alert("Please input Tip Percentage");
+	}
+	else if(tipPercentage<0 || tipPercentage>100)
+	{
+	alert("Please input Tip Percentage greater than zero and less than equal to 100");
+	}
+	else if(numberOfPeople<1)
+	{
+	alert("Please input value in Number of People greater than zero");
+	}
+	else if(numberOfPeople=="")
+	{
+	alert("Please input Number of People");
+	}
+    totalTip = (parseFloat(tipPercentage)/100 * parseFloat(bill));
+    tipPerPerson = (totalTip/parseFloat(numberOfPeople));
+    totalBillPerPerson = ((parseFloat(bill)/parseFloat(numberOfPeople)) +(tipPerPerson));
+	if(!isNaN(tipPerPerson))
+	{
+	document.getElementById("answer1").innerHTML="Tip per Person $: "+tipPerPerson;
+	}
+	if(!isNaN(totalBillPerPerson))
+	{
+	document.getElementById("answer2").innerHTML="Total bill per Person $: "+totalBillPerPerson;
+	}
+}
+
+</script>
+</body>
+</html>
